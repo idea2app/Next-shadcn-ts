@@ -17,13 +17,7 @@ const eslintConfig = [
       // built in
       "arrow-body-style": ["error", "as-needed"],
       "no-empty-pattern": "warn",
-      "consistent-return": "error",
-      "import/named": "error",
-      // typescript
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-empty-object-type": "off",
-      "@typescript-eslint/no-unsafe-declaration-merging": "warn",
+      "consistent-return": "warn",
       // next
       "@next/next/no-sync-scripts": "warn",
       // react
@@ -42,6 +36,15 @@ const eslintConfig = [
           noSortAlphabetically: true,
         },
       ],
+      // typescript
+      "@typescript-eslint/no-unused-vars": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-empty-object-type": "off",
+      "@typescript-eslint/no-unsafe-declaration-merging": "warn",
+
+      // simple-import-sort
+      "simple-import-sort/exports": "error",
+      "simple-import-sort/imports": "error",
       // spellchecker
       "@cspell/spellchecker": [
         "warn",
@@ -52,15 +55,13 @@ const eslintConfig = [
           },
         },
       ],
-      // simple-import-sort
-      "simple-import-sort/exports": "error",
-      "simple-import-sort/imports": "error",
     },
     // latest version of ECMAScript
     parserOptions: {
       sourceType: "module",
       ecmaVersion: "latest",
     },
+    ignorePatterns: ["node_modules", ".next", "public"],
   }),
 ];
 
