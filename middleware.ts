@@ -5,25 +5,19 @@ import { NextResponse } from "next/server";
 
 import { i18n } from "./i18n-config";
 
-function getLocale(request: NextRequest): string | undefined {
-  // Negotiator expects plain object so we need to transform headers
-  const negotiatorHeaders: Record<string, string> = {};
-  request.headers.forEach((value, key) => (negotiatorHeaders[key] = value));
-
-  const { locales } = i18n;
+function getLocale({ headers }: NextRequest): string | undefined {
+  const { defaultLocale, locales } = i18n;
 
   // Use negotiator and intl-localematcher to get best locale
-  const languages = new Negotiator({ headers: negotiatorHeaders }).languages([
-    ...locales,
-  ]);
+  const languages = new Negotiator({
+    headers: Object.fromEntries([...headers]),
+  }).languages([...locales]);
 
-  const locale = matchLocale(languages, locales, i18n.defaultLocale);
-
-  return locale;
+  return matchLocale(languages, locales, defaultLocale);
 }
 
 export function middleware(request: NextRequest) {
-  const pathname = request.nextUrl.pathname;
+  const { pathname } = request.nextUrl;
 
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
@@ -34,12 +28,6 @@ export function middleware(request: NextRequest) {
   // Redirect if there is no locale
   if (pathnameIsMissingLocale) {
     const locale = getLocale(request);
-    console.log(
-      locale,
-      "======redirect",
-      pathnameIsMissingLocale,
-      "=======pathnameIsMissingLocale",
-    );
 
     // e.g. incoming request is /products
     // The new URL is now /en-US/products
