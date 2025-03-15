@@ -112,7 +112,7 @@ export default tsEslint.config(
         {
           cspell: {
             language: "en",
-            dictionaries: ["typescript", "node", "html", "css", "bash", "npm"],
+            dictionaries: ["typescript", "node", "next", "css", "bash", "npm"],
           },
         },
       ],

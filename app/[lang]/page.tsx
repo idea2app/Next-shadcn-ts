@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Image from "next/image";
 
-import { author, description, keywords, siteName } from "@/config";
+import { author, baseURL, description, keywords, siteName } from "@/config";
 import { getDictionary } from "@/get-dictionary";
 import { Locale } from "@/i18n-config";
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
   description: description,
   authors: [{ name: author }],
   keywords: keywords,
+  openGraph: { images: [{ url: `${baseURL}/api/og` }] },
 };
 
 export default async function Home({
