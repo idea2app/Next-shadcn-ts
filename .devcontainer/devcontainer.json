@@ -1,0 +1,43 @@
+{
+  "name": "Next.js Development Environment",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+  /* https://containers.dev/features */
+  "features": {
+    "ghcr.io/devcontainers-extra/features/vercel-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/pnpm:2": {
+      "version": "latest"
+    }
+  },
+  "onCreateCommand": "vercel login --github --oob",
+  "postCreateCommand": "pnpm i",
+  "postStartCommand": "pnpm dev",
+  "customizations": {
+    "vscode": {
+      /* The following VS Code extensions have been tested and confirmed to install correctly through the dev container */
+      "extensions": [
+        "yzhang.markdown-all-in-one",
+        "unifiedjs.vscode-mdx",
+        "jock.svg",
+        "redhat.vscode-yaml",
+        "clinyong.vscode-css-modules",
+        "ms-vscode.vscode-typescript-next",
+        "pflannery.vscode-versionlens",
+        "christian-kohler.npm-intellisense",
+        "wix.vscode-import-cost",
+        "rangav.vscode-thunder-client",
+        "eamodio.gitlens",
+        "github.vscode-pull-request-github",
+        "github.vscode-github-actions",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "stylelint.vscode-stylelint",
+        "bradlc.vscode-tailwindcss",
+        "streetsidesoftware.code-spell-checker",
+        "formulahendry.auto-rename-tag"
+      ]
+    }
+  },
+  "forwardPorts": [3000]
+}
