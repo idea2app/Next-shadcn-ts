@@ -1,6 +1,6 @@
 {
   "name": "Next.js Development Environment",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node",
   /* https://containers.dev/features */
   "features": {
     "ghcr.io/devcontainers-extra/features/vercel-cli:1": {
@@ -10,9 +10,8 @@
       "version": "latest"
     }
   },
-  "onCreateCommand": "vercel login --github --oob",
-  "postCreateCommand": "pnpm i",
-  "postStartCommand": "pnpm dev",
+  "postCreateCommand": "vercel login --github --oob",
+  "postStartCommand": "pnpm i && pnpm dev",
   "customizations": {
     "vscode": {
       /* The following VS Code extensions have been tested and confirmed to install correctly through the dev container */
