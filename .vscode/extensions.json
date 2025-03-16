@@ -1,0 +1,31 @@
+{
+  "recommendations": [
+    "yzhang.markdown-all-in-one",
+    "unifiedjs.vscode-mdx",
+    "jock.svg",
+    "redhat.vscode-yaml",
+    "akamud.vscode-caniuse",
+    "clinyong.vscode-css-modules",
+    "ms-vscode.vscode-typescript-next",
+
+    "pflannery.vscode-versionlens",
+    "christian-kohler.npm-intellisense",
+    "wix.vscode-import-cost",
+    "rangav.vscode-thunder-client",
+
+    "eamodio.gitlens",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+
+    "figma.figma-vscode-extension",
+
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "bradlc.vscode-tailwindcss",
+    "streetsidesoftware.code-spell-checker",
+    "formulahendry.auto-rename-tag",
+
+    "GitHub.copilot"
+  ]
+}
