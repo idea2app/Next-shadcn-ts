@@ -22,6 +22,15 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`][4] to automatically optimize and load [Geist][5], a new font family for Vercel.
 
+## Add components
+
+For example:
+
+```bash
+npx shadcn-helper add alert badge
+npx shadcn-helper edit alert
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
