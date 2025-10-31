@@ -1,6 +1,5 @@
 import cspellPlugin from "@cspell/eslint-plugin";
 import eslint from "@eslint/js";
-// @ts-expect-error next plugin is not typed
 import nextPlugin from "@next/eslint-plugin-next";
 import stylistic from "@stylistic/eslint-plugin";
 import eslintConfigPrettier from "eslint-config-prettier";

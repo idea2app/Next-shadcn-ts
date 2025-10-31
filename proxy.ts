@@ -17,7 +17,7 @@ function getLocale({ headers }: NextRequest): string | undefined {
   return matchLocale(languages, locales, defaultLocale);
 }
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname, search, hash } = request.nextUrl;
 
   if (pathname == "/api/og")
