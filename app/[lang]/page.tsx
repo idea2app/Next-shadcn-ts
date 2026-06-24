@@ -38,6 +38,20 @@ export default async function Home({
             priority
           />
         </Link>
+        <nav className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+          <Link
+            href={`/${lang}/pagination`}
+            className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
+          >
+            {dict.pagination}
+          </Link>
+          <Link
+            href={`/${lang}/scroll-list`}
+            className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
+          >
+            {dict.scroll_list}
+          </Link>
+        </nav>
       </main>
     </div>
   );

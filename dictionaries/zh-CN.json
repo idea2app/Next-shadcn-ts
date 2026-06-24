@@ -1,3 +1,5 @@
 {
-  "hello_world": "你好，世界"
+  "hello_world": "你好，世界",
+  "pagination": "分页",
+  "scroll_list": "滚动列表"
 }
