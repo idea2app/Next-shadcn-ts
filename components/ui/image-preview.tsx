@@ -1,6 +1,6 @@
 "use client";
 
-import { observable,reaction as mobxReaction } from "mobx";
+import { observable, reaction as mobxReaction } from "mobx";
 import { observer } from "mobx-react";
 import { ObservedComponent } from "mobx-react-helper";
 import { ImgHTMLAttributes } from "react";
