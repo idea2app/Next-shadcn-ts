@@ -52,7 +52,7 @@ export default async function Home({
             {i18n.t("scroll_list") as string}
           </Link>
           <Link
-            href={`/${lang}/edtior`}
+            href={`/${lang}/editor`}
             className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
             {i18n.t("editor") as string}
