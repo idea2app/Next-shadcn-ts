@@ -12,6 +12,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "useDefineForClassFields": true,
     "jsx": "react-jsx",
     "incremental": true,
     "plugins": [{ "name": "next" }],

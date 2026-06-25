@@ -7,29 +7,29 @@ import {
 import { DataObject } from "mobx-restful";
 import { parseCookie } from "web-utility";
 
-import zhCN from "../translation/zh-CN";
+import zhCN from "./zh-CN";
 
 configure({ enforceActions: "never" });
 
 export type LanguageCode = "zh-CN" | "zh-TW" | "en-US";
 
-type TranslationData =
-  | TranslationMap<string>
-  | (() => Promise<{ default: TranslationMap<string> }>);
+export type TranslationKey = keyof typeof zhCN;
+
+type TranslationData<K extends string = string> =
+  | TranslationMap<K>
+  | (() => Promise<{ default: TranslationMap<K> }>);
 
 const i18nData: Record<LanguageCode, TranslationData> = {
   "zh-CN": zhCN,
-  "zh-TW": () => import("../translation/zh-TW"),
-  "en-US": () => import("../translation/en-US"),
+  "zh-TW": () => import("./zh-TW"),
+  "en-US": () => import("./en-US"),
 };
 
-type I18nTextKey = string;
-
-export const createI18nStore = <N extends LanguageCode>(
+export const createI18nStore = <N extends LanguageCode, K extends string>(
   language?: N,
-  data?: TranslationMap<I18nTextKey>,
+  data?: TranslationMap<K>,
 ) => {
-  const store = new TranslationModel<LanguageCode, I18nTextKey>({
+  const store = new TranslationModel<N, K>({
     ...i18nData,
     ...(language && { [language]: data }),
   });
@@ -40,7 +40,7 @@ export const createI18nStore = <N extends LanguageCode>(
   return store;
 };
 
-export const i18n = createI18nStore();
+export const i18n = createI18nStore<LanguageCode, TranslationKey>();
 
 export const LanguageName: Record<LanguageCode, string> = {
   "zh-CN": "简体中文",
@@ -52,11 +52,11 @@ export const locales = Object.keys(LanguageName) as LanguageCode[];
 
 export const defaultLocale: LanguageCode = "en-US";
 
-type SSRI18nInput = {
+interface SSRI18nInput {
   cookie?: string;
   acceptLanguage?: string;
   query?: Record<string, string | string[] | undefined>;
-};
+}
 
 const pickFirstQueryValue = (value?: string | string[]) =>
   Array.isArray(value) ? value[0] : value;

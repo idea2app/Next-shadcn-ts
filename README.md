@@ -20,8 +20,6 @@ Open [http://localhost:3000][3] with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`][4] to automatically optimize and load [Geist][5], a new font family for Vercel.
-
 ## Add components
 
 For example:
@@ -49,8 +47,6 @@ Check out our [Next.js deployment documentation][10] for more details.
 [1]: https://nextjs.org
 [2]: https://nextjs.org/docs/app/api-reference/cli/create-next-app
 [3]: http://localhost:3000
-[4]: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
-[5]: https://vercel.com/font
 [6]: https://nextjs.org/docs
 [7]: https://nextjs.org/learn
 [8]: https://github.com/vercel/next.js

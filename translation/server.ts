@@ -12,5 +12,6 @@ export const loadSSRI18nFromRequest = async (
     acceptLanguage: headerStore.get("accept-language") ?? "",
     query,
   });
+
   return createI18nStore(language, languageMap);
 };

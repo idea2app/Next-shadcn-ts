@@ -4,9 +4,9 @@ import { GitRepository } from "mobx-github";
 import { observer } from "mobx-react";
 import { FC } from "react";
 
-import { ScrollList } from "@/components/ui/scroll-list";
+import { ScrollList } from "@/components/ui/mobx-restful-shadcn/scroll-list";
 import { repositoryStore } from "@/models/Repository";
-import { i18n } from "@/i18n";
+import { i18n } from "@/translation";
 
 const ScrollListPage: FC = observer(() => (
   <main className="container mx-auto px-4 py-8">
@@ -18,30 +18,32 @@ const ScrollListPage: FC = observer(() => (
       store={repositoryStore}
       renderList={(allItems: GitRepository[]) => (
         <ul className="grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
-          {allItems.map(({ id, html_url, full_name, description, language }) => (
-            <li key={id} className="rounded-lg border p-4 shadow-sm">
-              <h2 className="font-semibold">
-                <a
-                  href={html_url}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  {full_name}
-                </a>
-              </h2>
-              {description && (
-                <p className="text-muted-foreground mt-1 text-sm">
-                  {description}
-                </p>
-              )}
-              {language && (
-                <span className="text-muted-foreground mt-2 inline-block text-xs font-medium">
-                  {language}
-                </span>
-              )}
-            </li>
-          ))}
+          {allItems.map(
+            ({ id, html_url, full_name, description, language }) => (
+              <li key={id} className="rounded-lg border p-4 shadow-sm">
+                <h2 className="font-semibold">
+                  <a
+                    href={html_url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-primary hover:underline"
+                  >
+                    {full_name}
+                  </a>
+                </h2>
+                {description && (
+                  <p className="text-muted-foreground mt-1 text-sm">
+                    {description}
+                  </p>
+                )}
+                {language && (
+                  <span className="text-muted-foreground mt-2 inline-block text-xs font-medium">
+                    {language}
+                  </span>
+                )}
+              </li>
+            ),
+          )}
         </ul>
       )}
     />

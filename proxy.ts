@@ -4,10 +4,9 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { patchHeaders } from "next-ssr-middleware";
 
-import { defaultLocale, locales } from "./i18n";
+import { defaultLocale, locales } from "./translation";
 
 function getLocale({ headers }: NextRequest): string | undefined {
-
   // Use negotiator and intl-localematcher to get best locale
   const languages = new Negotiator({
     headers: Object.fromEntries([...headers]),

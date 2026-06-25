@@ -5,10 +5,13 @@ import { GitRepository } from "mobx-github";
 import { observer } from "mobx-react";
 import { ObservedComponent } from "mobx-react-helper";
 
-import { BadgeBar } from "@/components/ui/badge-bar";
-import { Column, RestTable } from "@/components/ui/rest-table";
+import { BadgeBar } from "@/components/ui/mobx-restful-shadcn/badge-bar";
+import {
+  Column,
+  RestTable,
+} from "@/components/ui/mobx-restful-shadcn/rest-table";
 import { repositoryStore } from "@/models/Repository";
-import { i18n } from "@/i18n";
+import { i18n } from "@/translation";
 
 @observer
 class RepositoryTable extends ObservedComponent<{}, typeof i18n> {
