@@ -21,7 +21,7 @@ const EditorPage: FC = observer(() => {
     <main className="mx-auto w-full max-w-5xl px-4 py-6">
       <h1 className="my-4 text-center text-2xl font-semibold">{title}</h1>
 
-      <HTMLEditor defaultValue="Hello, HTML!" onChange={console.info} />
+      <HTMLEditor defaultValue="Hello, HTML!" />
     </main>
   );
 });
