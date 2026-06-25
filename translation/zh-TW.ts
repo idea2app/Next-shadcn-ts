@@ -4,6 +4,7 @@ export default {
   hello_world: "你好，世界",
   pagination: "分頁",
   scroll_list: "滾動列表",
+  editor: "編輯器",
   load_more: "載入更多……",
   no_more: "沒有更多",
   create: "新增",

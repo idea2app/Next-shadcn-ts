@@ -4,6 +4,7 @@ export default {
   hello_world: "Hello, World",
   pagination: "Pagination",
   scroll_list: "Scroll List",
+  editor: "Editor",
   load_more: "Load more...",
   no_more: "No more",
   create: "Create",
