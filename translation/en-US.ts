@@ -1,6 +1,9 @@
 import { IDType } from "mobx-restful";
 
 export default {
+  hello_world: "Hello, World",
+  pagination: "Pagination",
+  scroll_list: "Scroll List",
   load_more: "Load more...",
   no_more: "No more",
   create: "Create",

@@ -3,8 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { author, baseURL, description, keywords, siteName } from "@/config";
-import { getDictionary } from "@/get-dictionary";
-import { Locale } from "@/i18n-config";
+import { LanguageCode } from "@/i18n";
+import { loadSSRI18nFromRequest } from "@/i18n/server";
 
 import logo from "../../public/logo.svg";
 
@@ -19,15 +19,15 @@ export const metadata: Metadata = {
 export default async function Home({
   params,
 }: {
-  params: Promise<{ lang: Locale }>;
+  params: Promise<{ lang: LanguageCode }>;
 }) {
   const { lang } = await params;
-  const dict = await getDictionary(lang);
+  const i18n = await loadSSRI18nFromRequest({ language: lang });
 
   return (
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
-        <h1>{dict.hello_world}</h1>
+        <h1>{i18n.t("hello_world") as string}</h1>
         <Link href="/dashboard">
           <Image
             className="dark:invert"
@@ -43,13 +43,13 @@ export default async function Home({
             href={`/${lang}/pagination`}
             className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
-            {dict.pagination}
+            {i18n.t("pagination") as string}
           </Link>
           <Link
             href={`/${lang}/scroll-list`}
             className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
           >
-            {dict.scroll_list}
+            {i18n.t("scroll_list") as string}
           </Link>
         </nav>
       </main>

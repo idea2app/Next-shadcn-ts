@@ -1,6 +1,9 @@
 import { IDType } from "mobx-restful";
 
 export default {
+  hello_world: "你好，世界",
+  pagination: "分页",
+  scroll_list: "滚动列表",
   load_more: "加载更多……",
   no_more: "没有更多",
   create: "新增",

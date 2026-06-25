@@ -8,7 +8,7 @@ import { ObservedComponent } from "mobx-react-helper";
 import { BadgeBar } from "@/components/ui/badge-bar";
 import { Column, RestTable } from "@/components/ui/rest-table";
 import { repositoryStore } from "@/models/Repository";
-import { i18n } from "@/models/Translation";
+import { i18n } from "@/i18n";
 
 @observer
 class RepositoryTable extends ObservedComponent<{}, typeof i18n> {
