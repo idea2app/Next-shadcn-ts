@@ -19,6 +19,7 @@ export default {
     `您確定刪除 ${keys.join("、")} 嗎？`,
   repository_name: "儲存庫名稱",
   home_page: "主頁",
+  language: "語言",
   programming_language: "程式語言",
   topic: "話題",
   star_count: "星標數",

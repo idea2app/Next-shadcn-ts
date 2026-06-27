@@ -51,7 +51,7 @@ export const MainNav = () => {
           ))}
         </nav>
         <label className="flex items-center gap-2 text-sm font-medium">
-          <span>{t("programming_language") as string}</span>
+          <span>{t("language") as string}</span>
           <select
             className="rounded-md border bg-transparent px-2 py-1"
             value={currentLanguage}

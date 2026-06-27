@@ -19,6 +19,7 @@ export default {
     `您确定删除 ${keys.join("、")} 吗？`,
   repository_name: "仓库名",
   home_page: "主页",
+  language: "语言",
   programming_language: "编程语言",
   topic: "话题",
   star_count: "星标数",

@@ -19,6 +19,7 @@ export default {
     `Are you sure to delete ${keys.join(", ")}?`,
   repository_name: "Repository Name",
   home_page: "Home Page",
+  language: "Language",
   programming_language: "Programming Language",
   topic: "Topic",
   star_count: "Star Count",
