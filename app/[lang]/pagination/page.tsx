@@ -4,6 +4,7 @@ import { computed } from "mobx";
 import { GitRepository } from "mobx-github";
 import { observer } from "mobx-react";
 import { ObservedComponent } from "mobx-react-helper";
+import { ContextType } from "react";
 
 import { BadgeBar } from "@/components/ui/mobx-restful-shadcn/badge-bar";
 import {
@@ -11,12 +12,16 @@ import {
   RestTable,
 } from "@/components/ui/mobx-restful-shadcn/rest-table";
 import { repositoryStore } from "@/models/Repository";
-import { i18n } from "@/translation";
+import { I18nContext } from "@/translation/context";
 
 @observer
-class RepositoryTable extends ObservedComponent<{}, typeof i18n> {
+class RepositoryTable extends ObservedComponent<{}> {
+  static contextType = I18nContext;
+  declare context: ContextType<typeof I18nContext>;
+
   @computed
   get columns(): Column<GitRepository>[] {
+    const i18n = this.context;
     const { t } = i18n;
 
     return [
@@ -61,6 +66,8 @@ class RepositoryTable extends ObservedComponent<{}, typeof i18n> {
   }
 
   render() {
+    const i18n = this.context;
+
     return (
       <RestTable
         className="flex h-full flex-col gap-3 overflow-auto text-center"

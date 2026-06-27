@@ -1,10 +1,10 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { observer } from "mobx-react";
-import { FC } from "react";
+import dynamic from "next/dynamic";
+import { FC, useContext } from "react";
 
-import { i18n } from "@/translation";
+import { I18nContext } from "@/translation/context";
 
 const HTMLEditor = dynamic(
   () =>
@@ -15,6 +15,7 @@ const HTMLEditor = dynamic(
 );
 
 const EditorPage: FC = observer(() => {
+  const i18n = useContext(I18nContext);
   const title = `HTML ${i18n.t("editor")}`;
 
   return (

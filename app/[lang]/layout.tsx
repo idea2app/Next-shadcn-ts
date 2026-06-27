@@ -2,10 +2,28 @@ import "./globals.css";
 
 import { PropsWithChildren } from "react";
 
-export default function RootLayout({ children }: PropsWithChildren<{}>) {
+import { I18nProvider } from "@/components/I18nProvider";
+import { MainNav } from "@/components/MainNav";
+import { LanguageCode } from "@/translation";
+import { loadSSRI18nFromRequest } from "@/translation/server";
+
+export default async function RootLayout({
+  children,
+  params,
+}: PropsWithChildren<{ params: Promise<{ lang: string }> }>) {
+  const { lang } = await params;
+  const { currentLanguage, currentMap } = await loadSSRI18nFromRequest({
+    language: lang as LanguageCode,
+  });
+
   return (
-    <html lang="en">
-      <body className="antialiased">{children}</body>
+    <html lang={currentLanguage}>
+      <body className="antialiased">
+        <I18nProvider language={currentLanguage} languageMap={currentMap}>
+          <MainNav />
+          {children}
+        </I18nProvider>
+      </body>
     </html>
   );
 }

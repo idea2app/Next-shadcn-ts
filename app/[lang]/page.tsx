@@ -28,7 +28,7 @@ export default async function Home({
     <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-sans)] sm:p-20">
       <main className="row-start-2 flex flex-col items-center gap-8 sm:items-start">
         <h1>{i18n.t("hello_world") as string}</h1>
-        <Link href="/dashboard">
+        <Link href={`/${lang}/dashboard`}>
           <Image
             className="dark:invert"
             src={logo}
@@ -38,26 +38,6 @@ export default async function Home({
             priority
           />
         </Link>
-        <nav className="flex flex-col gap-2 sm:flex-row sm:gap-4">
-          <Link
-            href={`/${lang}/pagination`}
-            className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            {i18n.t("pagination") as string}
-          </Link>
-          <Link
-            href={`/${lang}/scroll-list`}
-            className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            {i18n.t("scroll_list") as string}
-          </Link>
-          <Link
-            href={`/${lang}/editor`}
-            className="hover:bg-accent hover:text-accent-foreground rounded-md border px-4 py-2 text-sm font-medium transition-colors"
-          >
-            {i18n.t("editor") as string}
-          </Link>
-        </nav>
       </main>
     </div>
   );
