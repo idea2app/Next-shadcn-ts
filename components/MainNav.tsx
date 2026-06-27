@@ -6,14 +6,19 @@ import { useContext } from "react";
 
 import { siteName } from "@/config";
 import { I18nContext } from "@/translation/context";
-import { LanguageCode, LanguageName, locales } from "@/translation/index";
+import {
+  defaultLocale,
+  LanguageCode,
+  LanguageName,
+  locales,
+} from "@/translation/index";
 
 export const MainNav = () => {
   const router = useRouter();
   const pathname = usePathname();
   const i18n = useContext(I18nContext);
   const { t } = i18n;
-  const currentLanguage = i18n.currentLanguage || "en-US";
+  const currentLanguage = i18n.currentLanguage || defaultLocale;
 
   const navLinks = [
     { href: `/${currentLanguage}`, label: siteName },
