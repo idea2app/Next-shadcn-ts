@@ -19,10 +19,13 @@ class RepositoryTable extends ObservedComponent<{}> {
   static contextType = I18nContext;
   declare context: ContextType<typeof I18nContext>;
 
+  get i18n() {
+    return this.context;
+  }
+
   @computed
   get columns(): Column<GitRepository>[] {
-    const i18n = this.context;
-    const { t } = i18n;
+    const { t } = this.i18n;
 
     return [
       {
@@ -66,8 +69,6 @@ class RepositoryTable extends ObservedComponent<{}> {
   }
 
   render() {
-    const i18n = this.context;
-
     return (
       <RestTable
         className="flex h-full flex-col gap-3 overflow-auto text-center"
@@ -75,7 +76,7 @@ class RepositoryTable extends ObservedComponent<{}> {
         deletable
         columns={this.columns}
         store={repositoryStore}
-        translator={i18n}
+        translator={this.i18n}
         onCheck={console.info}
       />
     );

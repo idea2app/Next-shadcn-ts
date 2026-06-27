@@ -12,7 +12,8 @@ export const MainNav = () => {
   const router = useRouter();
   const pathname = usePathname();
   const i18n = useContext(I18nContext);
-  const { currentLanguage = "en-US", t } = i18n;
+  const { t } = i18n;
+  const currentLanguage = i18n.currentLanguage || "en-US";
 
   const navLinks = [
     { href: `/${currentLanguage}`, label: siteName },
