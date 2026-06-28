@@ -1,12 +1,11 @@
 "use client";
 
-import { GitRepository } from "mobx-github";
 import { observer } from "mobx-react";
 import { FC, useContext } from "react";
 
+import { I18nContext } from "@/components/I18nProvider";
 import { ScrollList } from "@/components/ui/mobx-restful-shadcn/scroll-list";
 import { repositoryStore } from "@/models/Repository";
-import { I18nContext } from "@/translation/context";
 
 const ScrollListPage: FC = observer(() => {
   const i18n = useContext(I18nContext);
@@ -19,7 +18,7 @@ const ScrollListPage: FC = observer(() => {
         className="h-[80vh] overflow-auto"
         translator={i18n}
         store={repositoryStore}
-        renderList={(allItems: GitRepository[]) => (
+        renderList={(allItems) => (
           <ul className="grid list-none grid-cols-1 gap-4 p-0 sm:grid-cols-2">
             {allItems.map(
               ({ id, html_url, full_name, description, language }) => (

@@ -24,4 +24,4 @@ export default {
   topic: "Topic",
   star_count: "Star Count",
   description: "Description",
-};
+} as const;

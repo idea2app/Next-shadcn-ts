@@ -4,7 +4,7 @@ import { observer } from "mobx-react";
 import dynamic from "next/dynamic";
 import { FC, useContext } from "react";
 
-import { I18nContext } from "@/translation/context";
+import { I18nContext } from "@/components/I18nProvider";
 
 const HTMLEditor = dynamic(
   () =>
@@ -15,8 +15,8 @@ const HTMLEditor = dynamic(
 );
 
 const EditorPage: FC = observer(() => {
-  const i18n = useContext(I18nContext);
-  const title = `HTML ${i18n.t("editor")}`;
+  const { t } = useContext(I18nContext);
+  const title = `HTML ${t("editor")}`;
 
   return (
     <main className="mx-auto w-full max-w-5xl px-4 py-6">

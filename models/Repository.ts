@@ -1,12 +1,12 @@
 import { githubClient, RepositoryModel } from "mobx-github";
 
-githubClient.use(({ request }, next) => {
-  const token = process.env.GITHUB_TOKEN;
+const token = process.env.GITHUB_TOKEN;
 
+githubClient.use(({ request }, next) => {
   if (token)
     request.headers = {
-      ...request.headers,
       Authorization: "Bearer " + token,
+      ...request.headers,
     };
 
   return next();

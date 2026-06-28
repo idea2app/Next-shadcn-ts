@@ -4,28 +4,26 @@ import { computed } from "mobx";
 import { GitRepository } from "mobx-github";
 import { observer } from "mobx-react";
 import { ObservedComponent } from "mobx-react-helper";
-import { ContextType } from "react";
 
+import { I18nContext } from "@/components/I18nProvider";
 import { BadgeBar } from "@/components/ui/mobx-restful-shadcn/badge-bar";
 import {
   Column,
   RestTable,
 } from "@/components/ui/mobx-restful-shadcn/rest-table";
 import { repositoryStore } from "@/models/Repository";
-import { I18nContext } from "@/translation/context";
+import { i18n } from "@/translation";
 
 @observer
-class RepositoryTable extends ObservedComponent<{}> {
+export default class RepositoryTable extends ObservedComponent<
+  {},
+  typeof i18n
+> {
   static contextType = I18nContext;
-  declare context: ContextType<typeof I18nContext>;
-
-  get i18n() {
-    return this.context;
-  }
 
   @computed
   get columns(): Column<GitRepository>[] {
-    const { t } = this.i18n;
+    const { t } = this.observedContext;
 
     return [
       {
@@ -76,11 +74,9 @@ class RepositoryTable extends ObservedComponent<{}> {
         deletable
         columns={this.columns}
         store={repositoryStore}
-        translator={this.i18n}
+        translator={this.observedContext}
         onCheck={console.info}
       />
     );
   }
 }
-
-export default RepositoryTable;

@@ -1,19 +1,16 @@
 "use client";
 
+import { observer } from "mobx-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useContext } from "react";
 
+import { I18nContext } from "@/components/I18nProvider";
 import { siteName } from "@/config";
-import { I18nContext } from "@/translation/context";
-import {
-  defaultLocale,
-  LanguageCode,
-  LanguageName,
-  locales,
-} from "@/translation/index";
+import { LanguageCode } from "@/translation";
+import { defaultLocale, LanguageName, locales } from "@/translation/constant";
 
-export const MainNav = () => {
+export const MainNav = observer(() => {
   const router = useRouter();
   const pathname = usePathname();
   const i18n = useContext(I18nContext);
@@ -22,15 +19,9 @@ export const MainNav = () => {
 
   const navLinks = [
     { href: `/${currentLanguage}`, label: siteName },
-    {
-      href: `/${currentLanguage}/pagination`,
-      label: t("pagination") as string,
-    },
-    {
-      href: `/${currentLanguage}/scroll-list`,
-      label: t("scroll_list") as string,
-    },
-    { href: `/${currentLanguage}/editor`, label: t("editor") as string },
+    { href: `/${currentLanguage}/pagination`, label: t("pagination") },
+    { href: `/${currentLanguage}/scroll-list`, label: t("scroll_list") },
+    { href: `/${currentLanguage}/editor`, label: t("editor") },
   ];
 
   const switchLanguage = (language: LanguageCode) => {
@@ -57,7 +48,7 @@ export const MainNav = () => {
           ))}
         </nav>
         <label className="flex items-center gap-2 text-sm font-medium">
-          <span>{t("language") as string}</span>
+          <span>{t("language")}</span>
           <select
             className="rounded-md border bg-transparent px-2 py-1"
             value={currentLanguage}
@@ -75,4 +66,4 @@ export const MainNav = () => {
       </div>
     </header>
   );
-};
+});

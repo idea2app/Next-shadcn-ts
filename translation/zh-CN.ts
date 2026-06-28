@@ -24,4 +24,4 @@ export default {
   topic: "话题",
   star_count: "星标数",
   description: "描述",
-};
+} as const;

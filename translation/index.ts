@@ -25,7 +25,10 @@ const i18nData: Record<LanguageCode, TranslationData> = {
   "en-US": () => import("./en-US"),
 };
 
-export const createI18nStore = <N extends LanguageCode, K extends string>(
+export const createI18nStore = <
+  N extends LanguageCode,
+  K extends TranslationKey,
+>(
   language?: N,
   data?: TranslationMap<K>,
 ) => {
@@ -40,17 +43,7 @@ export const createI18nStore = <N extends LanguageCode, K extends string>(
   return store;
 };
 
-export const i18n = createI18nStore<LanguageCode, TranslationKey>();
-
-export const LanguageName: Record<LanguageCode, string> = {
-  "zh-CN": "简体中文",
-  "zh-TW": "繁體中文",
-  "en-US": "English",
-};
-
-export const locales = Object.keys(LanguageName) as LanguageCode[];
-
-export const defaultLocale: LanguageCode = "en-US";
+export const i18n = createI18nStore();
 
 interface SSRI18nInput {
   cookie?: string;
@@ -94,7 +87,6 @@ export const loadSSRLanguage = async ({
     { cookie, query },
     ["language"],
   );
-
   const { language: currentLanguage, languageMap } = await loadLanguageMapFrom(
     i18nData,
     {
@@ -106,8 +98,5 @@ export const loadSSRLanguage = async ({
     },
   );
 
-  return {
-    language: currentLanguage,
-    languageMap,
-  };
+  return { language: currentLanguage, languageMap };
 };
