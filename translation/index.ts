@@ -13,7 +13,9 @@ configure({ enforceActions: "never" });
 
 export type LanguageCode = "zh-CN" | "zh-TW" | "en-US";
 
-export type TranslationKey = keyof typeof zhCN;
+export type LanguageMap = typeof zhCN;
+
+export type TranslationKey = keyof LanguageMap;
 
 type TranslationData<K extends string = string> =
   | TranslationMap<K>
