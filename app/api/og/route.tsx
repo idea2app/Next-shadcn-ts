@@ -20,7 +20,7 @@ import { description as siteDescription, siteName } from "@/config";
  *   Reference for supported HTML elements and attributes
  */
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -39,23 +39,21 @@ export async function GET(request: Request) {
     const logoDataUrl = `data:${logoMimeType};base64,${logoBase64}`;
 
     return new ImageResponse(
-      (
-        <div
-          tw="h-full w-full flex text-center items-center justify-center flex-col flex-nowrap bg-white"
-          style={{
-            backgroundImage:
-              "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
-            backgroundSize: "100px 100px",
-            gap: "32px",
-          }}
-        >
-          <img src={logoDataUrl} width={200} height={200} />
-          <hgroup tw="flex flex-col items-center" style={{ gap: "16px" }}>
-            <h2 tw="font-bold text-black text-4xl m-0">{title}</h2>
-            <p tw="text-gray-500 text-lg">{description}</p>
-          </hgroup>
-        </div>
-      ),
+      <div
+        tw="h-full w-full flex text-center items-center justify-center flex-col flex-nowrap bg-white"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 25px 25px, lightgray 2%, transparent 0%), radial-gradient(circle at 75px 75px, lightgray 2%, transparent 0%)",
+          backgroundSize: "100px 100px",
+          gap: "32px",
+        }}
+      >
+        <img src={logoDataUrl} width={200} height={200} />
+        <hgroup tw="flex flex-col items-center" style={{ gap: "16px" }}>
+          <h2 tw="font-bold text-black text-4xl m-0">{title}</h2>
+          <p tw="text-gray-500 text-lg">{description}</p>
+        </hgroup>
+      </div>,
       {
         width: 1200,
         height: 630,
