@@ -1,5 +1,6 @@
 import "./globals.css";
 
+import { encodeFunctions } from "mobx-i18n";
 import { PropsWithChildren } from "react";
 
 import { I18nProvider } from "@/components/I18nProvider";
@@ -19,7 +20,10 @@ export default async function RootLayout({
   return (
     <html lang={currentLanguage}>
       <body className="antialiased">
-        <I18nProvider language={currentLanguage} languageMap={currentMap}>
+        <I18nProvider
+          language={currentLanguage}
+          languageMap={JSON.stringify(currentMap, encodeFunctions)}
+        >
           <MainNav />
           {children}
         </I18nProvider>

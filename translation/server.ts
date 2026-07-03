@@ -1,9 +1,6 @@
-import { toJS } from "mobx";
 import { headers } from "next/headers";
 
-import { SerializedFunctions, serializeFunctionMembers } from "@/lib/utils";
-
-import { createI18nStore, LanguageMap, loadSSRLanguage } from "./index";
+import { createI18nStore, loadSSRLanguage } from "./index";
 
 export const loadSSRI18nFromRequest = async (
   query?: Record<string, string | string[] | undefined>,
@@ -16,11 +13,5 @@ export const loadSSRI18nFromRequest = async (
     query,
   });
 
-  const store = createI18nStore(language, languageMap);
-
-  return Object.assign(store, {
-    currentMap: serializeFunctionMembers(toJS(store.currentMap)),
-  }) as Omit<typeof store, "currentMap"> & {
-    currentMap: SerializedFunctions<LanguageMap>;
-  };
+  return createI18nStore(language, languageMap);
 };

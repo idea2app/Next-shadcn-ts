@@ -1,6 +1,7 @@
 import { configure } from "mobx";
 import {
   loadLanguageMapFrom,
+  TranslationConfiguration,
   TranslationMap,
   TranslationModel,
 } from "mobx-i18n";
@@ -18,8 +19,7 @@ export type LanguageMap = typeof zhCN;
 export type TranslationKey = keyof LanguageMap;
 
 type TranslationData<K extends string = string> =
-  | TranslationMap<K>
-  | (() => Promise<{ default: TranslationMap<K> }>);
+  TranslationMap<K> | (() => Promise<{ default: TranslationMap<K> }>);
 
 const i18nData: Record<LanguageCode, TranslationData> = {
   "zh-CN": zhCN,
@@ -34,11 +34,11 @@ export const createI18nStore = <
   language?: N,
   data?: TranslationMap<K>,
 ) => {
-  const store = new TranslationModel<N, K>({
-    ...i18nData,
-    ...(language && { [language]: data }),
-  });
-
+  const store = new TranslationModel<N, K>(
+    language && data
+      ? ({ [language]: data } as TranslationConfiguration<N, K>)
+      : i18nData,
+  );
   if (language) store.currentLanguage = language;
   if (data) store.currentMap = data;
 
