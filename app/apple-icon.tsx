@@ -6,7 +6,7 @@ export const size = {
 };
 export const contentType = "image/png";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 export default function Icon() {
   try {

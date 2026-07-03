@@ -1,26 +1,32 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { encodeFunctions } from "mobx-i18n";
 import { PropsWithChildren } from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { I18nProvider } from "@/components/I18nProvider";
+import { MainNav } from "@/components/MainNav";
+import { LanguageCode } from "@/translation";
+import { loadSSRI18nFromRequest } from "@/translation/server";
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+export default async function RootLayout({
+  children,
+  params,
+}: PropsWithChildren<{ params: Promise<{ lang: string }> }>) {
+  const { lang } = await params;
+  const { currentLanguage, currentMap } = await loadSSRI18nFromRequest({
+    language: lang as LanguageCode,
+  });
 
-export default function RootLayout({ children }: PropsWithChildren<{}>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang={currentLanguage}>
+      <body className="antialiased">
+        <I18nProvider
+          language={currentLanguage}
+          languageMap={JSON.stringify(currentMap, encodeFunctions)}
+        >
+          <MainNav />
+          {children}
+        </I18nProvider>
       </body>
     </html>
   );

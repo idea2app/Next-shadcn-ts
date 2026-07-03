@@ -4,11 +4,9 @@ import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { patchHeaders } from "next-ssr-middleware";
 
-import { i18n } from "./i18n-config";
+import { defaultLocale, locales } from "./translation/constant";
 
 function getLocale({ headers }: NextRequest): string | undefined {
-  const { defaultLocale, locales } = i18n;
-
   // Use negotiator and intl-localematcher to get best locale
   const languages = new Negotiator({
     headers: Object.fromEntries([...headers]),
@@ -29,7 +27,7 @@ export function proxy(request: NextRequest) {
       }),
     });
   // Check if there is any supported locale in the pathname
-  const pathnameIsMissingLocale = i18n.locales.every(
+  const pathnameIsMissingLocale = locales.every(
     (locale) =>
       !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
   );
