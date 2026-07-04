@@ -7,6 +7,7 @@ const { stdout, stderr } = spawnSync("git", ["rev-parse", "HEAD"], {
   encoding: "utf8",
 });
 const revision = stdout.trim() || crypto.randomUUID();
+
 if (!stdout.trim())
   console.warn(
     `Falling back to random UUID for Serwist revision: ${
