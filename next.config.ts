@@ -3,9 +3,16 @@ import { spawnSync } from "node:child_process";
 import withSerwistInit from "@serwist/next";
 import type { NextConfig } from "next";
 
-const revision =
-  spawnSync("git", ["rev-parse", "HEAD"], { encoding: "utf8" }).stdout.trim() ||
-  crypto.randomUUID();
+const revisionResult = spawnSync("git", ["rev-parse", "HEAD"], {
+  encoding: "utf8",
+});
+const revision = revisionResult.stdout.trim() || crypto.randomUUID();
+if (!revisionResult.stdout.trim())
+  console.warn(
+    `Falling back to random UUID for Serwist revision: ${
+      revisionResult.stderr.trim() || "git revision is unavailable"
+    }`,
+  );
 const withSerwist = withSerwistInit({
   swSrc: "app/sw.ts",
   swDest: "public/sw.js",

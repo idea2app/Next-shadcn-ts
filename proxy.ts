@@ -54,7 +54,7 @@ export function proxy(request: NextRequest) {
 export const config = {
   // Matcher ignoring `/_next/`, `/api/`, PWA assets & icons
   matcher: [
-    "/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|sw.js|swe-worker|workbox-|apple-icon|icon).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|manifest.webmanifest|sw.js|swe-worker-|workbox-|apple-icon|icon).*)",
     "/api/og",
   ],
 };

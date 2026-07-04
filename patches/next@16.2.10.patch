@@ -2,11 +2,12 @@ diff --git a/dist/build/swc/options.js b/dist/build/swc/options.js
 index d3286d764e4c9f6d7f1d824334df2253377a6f9e..cad38e9122ed2ec15dc8e57c8a6574bb7ef7f7b4 100644
 --- a/dist/build/swc/options.js
 +++ b/dist/build/swc/options.js
-@@ -57,7 +57,7 @@ function getParserOptions({ filename, jsConfig, ...rest }) {
+@@ -57,7 +57,8 @@ function getParserOptions({ filename, jsConfig, ...rest }) {
          ...rest,
          syntax: hasTsSyntax ? 'typescript' : 'ecmascript',
          dynamicImport: true,
 -        decorators: enableDecorators,
++        // Always parse decorators so TC39 syntax works without experimentalDecorators.
 +        decorators: true,
          // Exclude regular TypeScript files from React transformation to prevent e.g. generic parameters and angle-bracket type assertion from being interpreted as JSX tags.
          [hasTsSyntax ? 'tsx' : 'jsx']: !isTSFile,
@@ -23,11 +24,12 @@ diff --git a/dist/esm/build/swc/options.js b/dist/esm/build/swc/options.js
 index 5a3af87de641fe0bd6bc9b7fcca3ef4de761f12a..f6fbc4dbd13f0f45340cf0f38af73ef6dc5f7ea9 100644
 --- a/dist/esm/build/swc/options.js
 +++ b/dist/esm/build/swc/options.js
-@@ -15,7 +15,7 @@ export function getParserOptions({ filename, jsConfig, ...rest }) {
+@@ -15,7 +15,8 @@ export function getParserOptions({ filename, jsConfig, ...rest }) {
          ...rest,
          syntax: hasTsSyntax ? 'typescript' : 'ecmascript',
          dynamicImport: true,
 -        decorators: enableDecorators,
++        // Always parse decorators so TC39 syntax works without experimentalDecorators.
 +        decorators: true,
          // Exclude regular TypeScript files from React transformation to prevent e.g. generic parameters and angle-bracket type assertion from being interpreted as JSX tags.
          [hasTsSyntax ? 'tsx' : 'jsx']: !isTSFile,
