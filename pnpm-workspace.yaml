@@ -5,3 +5,5 @@ allowBuilds:
   core-js: true
   sharp: true
   unrs-resolver: true
+patchedDependencies:
+  next@16.2.10: patches/next@16.2.10.patch

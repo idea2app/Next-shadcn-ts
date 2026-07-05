@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "@formatjs/intl-localematcher": "^0.8.10",
+    "@serwist/next": "^9.5.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "edkit": "^1.2.7",
@@ -28,10 +29,6 @@
     "web-utility": "^4.7.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/plugin-proposal-decorators": "^7.29.7",
-    "@babel/plugin-transform-typescript": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
     "@cspell/eslint-plugin": "^10.0.1",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
@@ -57,6 +54,7 @@
     "prettier-plugin-css-order": "^2.2.0",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "shadcn-helper": "^0.5.9",
+    "serwist": "^9.5.11",
     "tailwindcss": "^4.3.2",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.62.1"
